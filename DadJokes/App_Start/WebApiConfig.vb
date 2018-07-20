@@ -19,8 +19,5 @@ Public Module WebApiConfig
             defaults:=New With {.id = RouteParameter.Optional}
         )
 
-        'config.Routes.MapHttpRoute(name:="DefaultApi", routeTemplate:="dadjokes/{controller}/{id}", defaults:=New With {.id = RouteParameter.Optional})
-
-
     End Sub
 End Module

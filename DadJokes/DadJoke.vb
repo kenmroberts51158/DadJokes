@@ -33,4 +33,16 @@ Public Class DadJoke
         Return myJokeArray
     End Function
 
+    Public Shared Sub AddJoke(ByVal newJoke As String)
+
+        ' update the file if we have somthing
+        If IsNothing(newJoke) = False And Len(newJoke.Trim) > 0 Then
+            newJoke = newJoke.Replace(Chr(34), Chr(39)) ' replace " with '
+            System.IO.File.AppendAllText(HostingEnvironment.MapPath(myFilePath), Environment.NewLine & newJoke)
+            ' refresh the singleton array
+            myJokeArray = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
+        End If
+
+    End Sub
+
 End Class

@@ -15,5 +15,9 @@ Namespace Controllers
             Return myDadJoke.GetJoke(id)
         End Function
 
+        Public Sub PostValue(<FromBody()> ByVal value As String)
+            DadJoke.AddJoke(value)
+        End Sub
+
     End Class
 End Namespace
