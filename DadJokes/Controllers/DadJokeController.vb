@@ -16,7 +16,15 @@ Namespace Controllers
         End Function
 
         Public Sub PostValue(<FromBody()> ByVal value As String)
-            DadJoke.AddJoke(value)
+            Try
+                If value.StartsWith("@@") Then
+                    DadJoke.DeleteJoke(CInt(value.Replace("@@", "")))
+                Else
+                    DadJoke.AddJoke(value)
+                End If
+            Catch ex As Exception
+                ' just smile and wave boys, smile and wave.
+            End Try
         End Sub
 
     End Class

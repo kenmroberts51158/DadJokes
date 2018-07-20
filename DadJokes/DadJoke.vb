@@ -35,11 +35,23 @@ Public Class DadJoke
 
     Public Shared Sub AddJoke(ByVal newJoke As String)
 
-        ' update the file if we have somthing
         If IsNothing(newJoke) = False And Len(newJoke.Trim) > 0 Then
-            newJoke = newJoke.Replace(Chr(34), Chr(39)) ' replace " with '
-            System.IO.File.AppendAllText(HostingEnvironment.MapPath(myFilePath), Environment.NewLine & newJoke)
+            ' update the file if we have somthing
+            Dim lines As List(Of String) = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath)).ToList
+            lines.Add(newJoke.Replace(Chr(34), Chr(39))) ' replace " with '
+            System.IO.File.WriteAllLines(HostingEnvironment.MapPath(myFilePath), lines)
             ' refresh the singleton array
+            myJokeArray = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
+        End If
+
+    End Sub
+
+    Public Shared Sub DeleteJoke(ByVal id As Integer)
+
+        If (id) > 0 Then
+            Dim lines As List(Of String) = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath)).ToList
+            lines.RemoveAt(id)
+            System.IO.File.WriteAllLines(HostingEnvironment.MapPath(myFilePath), lines)
             myJokeArray = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
         End If
 
