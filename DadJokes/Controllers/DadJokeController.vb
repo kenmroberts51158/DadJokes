@@ -6,13 +6,11 @@ Namespace Controllers
         Inherits ApiController
 
         Public Function GetValue() As String
-            Dim myDadJoke As DadJoke = DadJoke.GetInstance
-            Return myDadJoke.GetJoke()
+            Return DadJoke.GetJoke()
         End Function
 
         Public Function GetValue(ByVal id As Integer) As String
-            Dim myDadJoke As DadJoke = DadJoke.GetInstance
-            Return myDadJoke.GetJoke(id)
+            Return DadJoke.GetJoke(id)
         End Function
 
         Public Sub PostValue(<FromBody()> ByVal value As String)

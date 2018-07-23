@@ -6,12 +6,12 @@ Public Class ValuesController
 
     ' GET api/values
     Public Function GetValues() As IEnumerable(Of String)
-        Return New String() {"value1", "value2"}
+        Return DadJoke.GetJokes()
     End Function
 
     ' GET api/values/5
     Public Function GetValue(ByVal id As Integer) As String
-        Return "value"
+        Return "go away"
     End Function
 
     ' POST api/values
