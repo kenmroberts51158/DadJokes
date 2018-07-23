@@ -6,8 +6,8 @@
 @ModelType Collection(Of ApiDescription)
 
 @Code
-    ViewData("Title") = "ASP.NET Web API Help Page"
-    
+    ViewData("Title") = "DadJoke Web API Help Page"
+
     ' Group APIs by controller
     Dim apiGroups As ILookup(Of HttpControllerDescriptor, ApiDescription) = Model.ToLookup(Function(api) api.ActionDescriptor.ControllerDescriptor)
 End Code
@@ -25,7 +25,7 @@ End Code
         <div class="content-wrapper">
             <h2>Introduction</h2>
             <p>
-                Provide a general description of your APIs here.
+                We know no one will read these.
             </p>
         </div>
     </section>
