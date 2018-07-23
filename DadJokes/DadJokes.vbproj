@@ -245,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\dadjokes.txt" />
+    <Content Include="App_Data\XmlDocument.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
