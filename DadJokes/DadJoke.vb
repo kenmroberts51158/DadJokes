@@ -1,17 +1,17 @@
 ﻿Imports System.Web.Hosting
 
+''' <summary>
+''' Handles all DadJoke functions
+''' (c) Kamikaze Software 2018 - All Rights Reserved.
+''' Portions developed by Wet Floor (r)
+''' Technical assistance provided by Sullivan Tire and Auto Service, Inc. 
+''' Inspired by Mr. Horn's Halo Hour & ItsMrsPenguin2U
+''' </summary>
 Public Class DadJoke
 
     Private Const myFilePath As String = "\App_Data\dadjokes.txt"
-    Private Shared myJokeArray As String() = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
+    Private Shared myJokeArray As String() = IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
     Private Shared myRandomGenerator As Random = New Random()
-
-    Public Shared ReadOnly Property GetInstance As DadJoke
-        Get
-            Static Instance As DadJoke = New DadJoke
-            Return Instance
-        End Get
-    End Property
 
     Private Sub New()
         ' prevents object creation
@@ -23,7 +23,6 @@ Public Class DadJoke
         Catch ex As Exception
             Return "Hey this ain't no joke; " & ex.Message
         End Try
-
     End Function
 
     Public Shared Function GetJoke(ByVal id As Integer) As String
@@ -42,11 +41,11 @@ Public Class DadJoke
         Try
             If IsNothing(newJoke) = False And Len(newJoke.Trim) > 0 Then
                 ' update the file if we have somthing
-                Dim lines As List(Of String) = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath)).ToList
+                Dim lines As List(Of String) = IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath)).ToList
                 lines.Add(newJoke.Replace(Chr(34), Chr(39))) ' replace " with '
-                System.IO.File.WriteAllLines(HostingEnvironment.MapPath(myFilePath), lines)
+                IO.File.WriteAllLines(HostingEnvironment.MapPath(myFilePath), lines)
                 ' refresh the singleton array
-                myJokeArray = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
+                myJokeArray = IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
             End If
         Catch ex As Exception
             ' just smile and wave boys, smile and wave.
@@ -56,10 +55,12 @@ Public Class DadJoke
     Public Shared Sub DeleteJoke(ByVal id As Integer)
         Try
             If (id) > 0 Then
-                Dim lines As List(Of String) = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath)).ToList
+                ' update the file if we have somthing
+                Dim lines As List(Of String) = IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath)).ToList
                 lines.RemoveAt(id)
-                System.IO.File.WriteAllLines(HostingEnvironment.MapPath(myFilePath), lines)
-                myJokeArray = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
+                IO.File.WriteAllLines(HostingEnvironment.MapPath(myFilePath), lines)
+                ' refresh the singleton array
+                myJokeArray = IO.File.ReadAllLines(HostingEnvironment.MapPath(myFilePath))
             End If
         Catch ex As Exception
             ' just smile and wave boys, smile and wave.
