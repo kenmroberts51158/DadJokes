@@ -6,7 +6,7 @@ Namespace Controllers
         Inherits ApiController
 
         ''' <summary>
-        ''' Returns a randon DadJoke
+        ''' Returns a random DadJoke
         ''' </summary>
         ''' <returns>String</returns>
         Public Function GetValue() As String

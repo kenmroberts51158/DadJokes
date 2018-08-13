@@ -536,7 +536,7 @@
     </member>
     <member name="M:DadJokes.Controllers.DadJokeController.GetValue">
       <summary>
-        Returns a randon DadJoke
+        Returns a random DadJoke
       </summary>
       <returns>String</returns>
     </member>
