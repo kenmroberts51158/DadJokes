@@ -5,7 +5,7 @@
 ''' (c) Kamikaze Software 2018 - All Rights Reserved.
 ''' Portions developed by Wet Floor (r)
 ''' Technical assistance provided by Sullivan Tire and Auto Service, Inc. 
-''' Inspired by Mr. Horn's Halo Hour & ItsMrsPenguin2U
+''' Inspired by Mr. Horn's Halo Hour and ItsMrsPenguin2U
 ''' </summary>
 Public Class DadJoke
 
